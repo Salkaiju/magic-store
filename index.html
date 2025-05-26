@@ -93,7 +93,7 @@
     </div>
   </div>
 </div>
-
+<div>e</div>
 <!-- Galeria de Produtos -->
 <div class="container mt-4">
   <div class="row product-gallery"></div>
@@ -184,29 +184,30 @@
       filtered.forEach(p => gallery.append(createCard(p)));
     }
 
-    function createCard(product, isHot=false) {
-      const col = document.createElement('div'); col.className = 'col-md-4 mb-3';
-      const card = document.createElement('div'); card.className = 'card' + (isHot ? ' hot-item' : '');
-      if (isHot) {
-        const label = document.createElement('div'); label.className='hot-label'; label.textContent='Item Mais Quente'; card.append(label);
-      }
-      card.innerHTML += `
-        <img src="${product.img}" class="card-img-top" alt="${product.title}">
-        <div class="card-body">
-          <h5 class="card-title">${product.title}</h5>
-          <p class="card-text">${product.price} Gold</p>
-          <button class="btn btn-primary btn-sm info-btn">Descrição</button>
-          <div class="item-info hidden"><p>${product.info}</p></div>
-        </div>`;
-      col.append(card);
+    function createCard(product) {
+  const col = document.createElement('div'); 
+  col.className = 'col-md-4 mb-3';
 
-      card.querySelector('.info-btn').addEventListener('click', e => {
-        const info = card.querySelector('.item-info');
-        info.classList.toggle('hidden');
-        e.target.textContent = info.classList.contains('hidden') ? 'Descrição' : 'Ocultar';
-      });
-      return col;
-    }
+  const card = document.createElement('div'); 
+  card.className = 'card';
+
+  const infoId = 'info-' + Math.random().toString(36).substr(2, 9); // ID único para vincular
+
+  card.innerHTML = `
+    <img src="${product.img}" class="card-img-top" alt="${product.title}">
+    <div class="card-body">
+      <h5 class="card-title">${product.title}</h5>
+      <p class="card-text">${product.price} Gold</p>
+      <button class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#${infoId}">Descrição</button>
+      <div id="${infoId}" class="collapse mt-2">
+        <p>${product.info}</p>
+      </div>
+    </div>
+  `;
+
+  col.appendChild(card);
+  return col;
+}
 
     searchForm.addEventListener('submit', e=>{ e.preventDefault(); renderGallery(); });
     categoryFilter.addEventListener('change', renderGallery);
