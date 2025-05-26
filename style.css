@@ -1,69 +1,64 @@
-
-
-
 body {
   /* sua imagem ou textura de fundo */
-  background-image: url('https://img.freepik.com/fotos-gratis/fundo-de-papel-texturizado-vintage-sujo_53876-103932.jpg?semt=ais_hybrid&w=740');
-  background-color: #1a1a1a;
+  background-color: #ffb35cee;
   background-repeat: repeat;
-  background-size: cover;
 }
 
-.carousel:hover ~ body {
-  animation-duration: 20s;
-    animation-timing-function: ease-in-out;
+body, h1, h2, h3, h4, h5, h6, p, button, input, select, label {
+  font-family: 'Cinzel', serif;
 }
 
-
-ul{
-    font-family: 'Cinzel Decorative', serif;
-      font-size: 0.8rem;
-      font-weight: 700;
+h1, h2, .navbar-brand {
+  font-family: 'Cinzel Decorative', cursive;
 }
 
-a{
-   font-family: 'Cinzel Decorative', serif;
-      font-size: 1rem;
-      font-weight: 700; 
-}
-
-nav{
-    font-family: 'Cinzel Decorative', serif;
-      font-size: 1rem;
-      font-weight: 600;
-}
-
-.carousel img {
-     margin-top: 20px;
-  max-height: 700px;
-object-fit: scale-down;
-}
-
-
-.product-item {
-  transition: all 0.3s ease;
-}
-
-.product-item.hidden {
+/* Liga/desliga visibilidade */
+.hidden {
   display: none !important;
 }
 
-.filter-menu .nav-link {
-  color: #333;
-  border: 1px solid transparent;
-  padding: 8px 16px;
-  margin: 0 4px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  background-color: transparent;
+/* Card do “Item Mais Quente” */
+.hot-item {
+  border: 4px solid #dc3545;
+  box-shadow: 0 0 15px rgba(220, 53, 69, 0.6);
+  margin: 20px auto;
 }
 
-.filter-menu .nav-link:hover {
-  background-color: #f0f0f0;
-}
-
-.filter-menu .nav-link.active {
+/* Label vermelha de destaque */
+.hot-label {
+  background: #dc3545;
+  color: #fff;
   font-weight: bold;
-  border: 2px solid #000;
-  background-color: #e0e0e0;
+  text-align: center;
+  padding: 6px;
+}
+
+/* Pequeno espaçamento e quebra de linha nos filtros */
+.filter-group {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Tamanho fixo para os cards */
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Tamanho fixo para as descrições ocultas */
+.item-info {
+  min-height: 60px;
+}
+
+/* Garante que a galeria mantenha altura estável */
+.product-gallery {
+  min-height: 600px;
+}
+
+/* Evita "saltos" no carregamento */
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
 }
