@@ -93,4 +93,5 @@ body {
 
 .hidden {
   display: none !important;
+  display:flex;
 }
